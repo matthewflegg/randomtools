@@ -26,7 +26,7 @@ Params:
 - functions: A bunch of functions. Include as many as you want, just make sure they're after 'data'
 
 Notes:
-- If you don't want to change the original dataset, use the @pass_by_value decorator (included in the code)
+- Uses a decorator to mimic the behaviour of passing by value. So it doesn't change the params it's called with
 - Data is 'piped' through the functions in the order they're listed.
 
 ---QUANTIFIERS---
