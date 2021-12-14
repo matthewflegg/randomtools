@@ -7,7 +7,8 @@ So far, it includes:
 
 - Pipe function, similar to F#'s pipe operator
 - Existential quantifiers for first order logic
-- A numerical integration tools
+- A numerical integration function
+- A graph class using adjacency lists
 
 Documentation/Instructions:
 
