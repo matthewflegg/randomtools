@@ -1,46 +1,29 @@
-from copy import deepcopy
-    
-def pass_by_value (function):
-    
-    ''' Decorator that takes a function as a parameter.
-    It copies the parameters, and calls the original
-    function using the copied parameters. 
-    
-    Emulates passing by value. '''
-    
-    def copy (*args):
-        
-        ''' Copies the parameters of the decorated function.
-        Places them all in a new list, called *cargs (copied
-        aruments), and calls decorated function using *cargs. '''
-            
-        cargs = [deepcopy (arg) for arg in args]
-        return function (*cargs)
-    
-    return copy 
+from functools import reduce
 
-@pass_by_value
-def pipe (data, *functions): 
+def pipe_iterable (data, *functions): 
     
     ''' Takes a variable/object and any amount of functions as
-    arguments. Processes a value through a chain of functions, 
-    passing the result of the previous one into the next one. '''
-    
-    def pipe_value (value, *functions):
-    
-        ''' Takes a single value and any amount of functions as
         arguments. Processes a value through a chain of functions, 
         passing the result of the previous one into the next one. '''
-        
-        for function in functions:
-            value = function (value)
-            
-        return value
-
-    if isinstance (data, list) or isinstance (data, set) or isinstance (data, tuple):
-        return [pipe (value, *functions) for value in data]
     
-    else: return pipe_value (data, *functions)
+    return list (map (lambda data: pipe (data, *functions), data))
+    
+''' 1. [a, *f] puts a at the start of a list, 
+    and unpacks all of the functions in f.
+
+    2. Reduce assigns the first value in the
+    list, g the value of a. It assigns the second, 
+    h the value of the first function. 
+
+    3. It evaluates the function applied to the 
+    expression, the result gets assigned to g. 
+    The second function then gets assigned to h. 
+
+    3. Repeats step 2 until it can't continue, 
+    then returns the result. '''
+
+pipe = lambda a, *f: reduce (lambda g, h: h (g), [a, *f])
+
         
 
     

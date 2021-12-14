@@ -1,5 +1,4 @@
 from tools import *
-from tools.pipe import pass_by_value
 
 def testing ():
     
@@ -11,14 +10,9 @@ def testing ():
     print (pipe (5, square, half)) # Should return 12.5
     
     # TESTING PIPE ON LISTS, SETS & TUPLES
-    print (pipe ([5, 7, 9], square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
-    print (pipe ({5, 7, 9}, square, half)) # Should return 12.5, 24.5, 40.5 in an unordered list
-    print (pipe ((5, 7, 9), square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
-    
-    # TESTING PASS BY VALUE DECORATOR
-    print (pipe ([5, 7, 9], square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
-    print (pipe ({5, 7, 9}, square, half)) # Should return 12.5, 24.5, 40.5 in an unordered list
-    print (pipe ((5, 7, 9), square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
+    print (pipe_iterable ([5, 7, 9], square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
+    print (pipe_iterable ({5, 7, 9}, square, half)) # Should return 12.5, 24.5, 40.5 in an unordered list
+    print (pipe_iterable ((5, 7, 9), square, half)) # Should return 12.5, 24.5, 40.5 in an ordered list
     
     # TESTING LOGICAL QUANTIFIERS
     print (existential (lambda x: True if x == 50 else False, [34, 56, 32, 76])) # Should return false
@@ -31,8 +25,8 @@ def testing ():
     
     # TESTING QUANTIFIERS + PIPE
     dataset = [10, 58, 23, 15, 92]    
-    print (existential (lambda x: True if x == 50 else False, pipe (dataset, square, half))) # Should return true
-    print (universal (lambda x: True if x == 50 else False, pipe (dataset, square, half))) # Should return false
+    print (existential (lambda x: True if x == 50 else False, pipe_iterable (dataset, square, half))) # Should return true
+    print (universal (lambda x: True if x == 50 else False, pipe_iterable (dataset, square, half))) # Should return false
     
     # TESTING INTEGRAL TOOLS
     print (integrate (3, 9, func = lambda a : (a ** 2) + (5 * a) + 6, accuracy = 1500))
