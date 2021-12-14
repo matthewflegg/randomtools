@@ -29,8 +29,8 @@ def testing ():
     print (universal (lambda x: True if x == 50 else False, pipe_iterable (dataset, square, half))) # Should return false
     
     # TESTING INTEGRAL TOOLS
-    print (integrate (3, 9, func = lambda a : (a ** 2) + (5 * a) + 6, accuracy = 1500))
-    print (integrate (2, 8, func = lambda n : (n ** 2) + (5 * n) + 6))
+    print (integrate (3, 9, lambda a : (a ** 2) + (5 * a) + 6, accuracy = 1500))
+    print (integrate (2, 8, lambda n : (n ** 2) + (5 * n) + 6))
     
     # TESTING GRAPH CLASS
     adj = {

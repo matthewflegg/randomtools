@@ -23,11 +23,3 @@ def pipe_iterable (data, *functions):
     then returns the result. '''
 
 pipe = lambda a, *f: reduce (lambda g, h: h (g), [a, *f])
-
-        
-
-    
-    
-    
-    
-
