@@ -63,11 +63,69 @@ Notes:
 - The higher the accuracy, the better the approximation will be 
 - Using a multi-variable function will break the program, I haven't added error handling yet lol
 
+--GRAPH CLASS METHODS--
 
+> Constructor
 
+Syntax:
+- G = Graph (AdjDict)
+- Example: 
 
+adjDict = {'A': ['B', 'C'], 'B': ['A', 'D'], 'C': ['A', 'D'], 'D': ['E'], 'E': ['D']}
+G = Graph (adjDict)
 
+Params:
+- AdjDict: A dictionary containing the vertices as keys, and the values as a list of vertices that vertex is adjacent to 
 
+> GetVertices ()
 
+An instance method that returns a list of vertices. 
+Literally just list (self.adj.keys ()) lol ;)
 
+Syntax:
+- object.GetVertices ()
+- Example: print (G.GetVertices ()) -> Output: ['A', 'B', 'C', 'D', 'E']
 
+Params: 
+- None 
+
+> GetEdges ()
+
+An instance method that returns a list of edges, which are represented as sets. 
+A set contains two vertices that have an edge between them.
+
+Syntax:
+- object.GetEdges ()
+- Example: print (G.GetEdges ()) -> Output: [{'B', 'A'}, {'C', 'A'}, {'B', 'D'}, {'D', 'C'}. {'E', 'D'}]
+
+Params:
+- None
+
+> AddVertex ()
+
+Instance method that adds a vertex to the adjacency list.
+
+Syntax:
+- object.AddVertex (vertex)
+- Example: 
+
+G.AddVertex ('F')
+print (g.GetVertices ()) -> Output: ['A', 'B', 'C', 'D', 'E', 'F']
+
+Params:
+= vertex: the name of the vertex.
+
+> AddEdge ()
+
+Instance method that adds an edge to the adjacency dict.
+
+Syntax:
+- object.AddEdge (edge)
+- Example:
+
+G.AddEdge ({'E', 'F'})
+G.AddEdge ({'D', 'F'})
+print (G.GetEdges ()) -> Output: [{'B', 'A'}, {'C', 'A'}, {'B', 'D'}, {'D', 'C'}, {'E', 'D'}, {'E', 'F'}, {'F', 'D'}]
+
+Params:
+- edge (set): a set containing the two vertices the edge connects.
